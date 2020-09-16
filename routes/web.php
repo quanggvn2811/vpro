@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +18,7 @@ Route::get('/', function () {
 
 
 //Server side
-Route::group(['namespase'=>'Admin'], function(){
+Route::group(['namespace'=>'Admin'], function(){
 	Route::group(['prefix'=>'login', 'middleware'=>'CheckLogedIn'], function(){
 		Route::get('/', 'AdminController@getLogin');
 		Route::post('/', 'AdminController@postLogin');
@@ -29,5 +28,9 @@ Route::group(['namespase'=>'Admin'], function(){
 
 	Route::group(['prefix'=>'admin', 'middleware'=>'CheckLogedOut'],function(){
 		Route::get('home', 'AdminController@getHome');
+	});
+	Route::group(['prefix'=>'categories'], function(){
+		Route::get('/', 'CategoryController@getCate');
+		Route::get('edit', 'CategoryController@editCate');
 	});
 });
