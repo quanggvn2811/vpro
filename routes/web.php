@@ -28,9 +28,14 @@ Route::group(['namespace'=>'Admin'], function(){
 
 	Route::group(['prefix'=>'admin', 'middleware'=>'CheckLogedOut'],function(){
 		Route::get('home', 'AdminController@getHome');
-	});
-	Route::group(['prefix'=>'categories'], function(){
+
+		Route::group(['prefix'=>'categories'], function(){
 		Route::get('/', 'CategoryController@getCate');
-		Route::get('edit', 'CategoryController@editCate');
+		Route::post('/', 'CategoryController@postCate');
+
+		Route::get('edit/{id}', 'CategoryController@editCate');
+		ROute::get('delete/{id}', 'CategoryController@deleteCate');
+	});
+
 	});
 });
