@@ -15,10 +15,15 @@
 					Thêm danh mục
 				</div>
 				<div class="panel-body">
-					<div class="form-group">
+					<form method="post" action="">
+						@csrf
+						@include('errors.note')
+						<div class="form-group">
 						<label>Tên danh mục:</label>
 						<input type="text" name="name" class="form-control" placeholder="Tên danh mục...">
+						<input type="submit" name="submit" value="Thêm danh mục" class="btn btn-primary" style="margin-top: 15px; width: 100%; height: 50px;">
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -35,55 +40,15 @@
 								</tr>
 							</thead>
 							<tbody>
+								@foreach($catelist as $cate)
 								<tr>
-									<td>iPhone</td>
+									<td>{{$cate->cate_name}}</td>
 									<td>
-										<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-										<a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
+										<a href="{{URL::to('admin/categories/edit/'. $cate->cate_id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
+										<a href="{{URL::to('admin/categories/delete/'. $cate->cate_id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
 									</td>
 								</tr>
-								<tr>
-									<td>Samsung</td>
-									<td>
-										<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-										<a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-									</td>
-								</tr> 
-								<tr>
-									<td>Nokia</td>
-									<td>
-										<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-										<a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-									</td>
-								</tr> 
-								<tr>
-									<td>HTC</td>
-									<td>
-										<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-										<a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-									</td>
-								</tr>
-								<tr>
-									<td>LG</td>
-									<td>
-										<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-										<a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-									</td>
-								</tr>
-								<tr>
-									<td>Sony</td>
-									<td>
-										<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-										<a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-									</td>
-								</tr>
-								<tr>
-									<td>Motorola</td>
-									<td>
-										<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
-										<a href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-									</td>
-								</tr> 
+							@endforeach
 							</tbody>
 						</table>
 					</div>
