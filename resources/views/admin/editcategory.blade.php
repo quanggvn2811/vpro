@@ -15,13 +15,21 @@
 					Sửa danh mục
 				</div>
 				<div class="panel-body">
-					<div class="form-group">
-						<label>Tên danh mục:</label>
-						<input type="text" name="name" class="form-control" placeholder="Tên danh mục...">
-					</div>
+					<form action="" method="post">
+						@csrf
+						<div class="form-group">
+							<label>Tên danh mục:</label>
+							@include('errors.note')
+							<input type="text" name="name" class="form-control" placeholder="Tên danh mục..." value="{{$cateEdit->cate_name}}">
+							<input type="submit" name="submit" value="Sửa đổi" class="form-control btn btn-danger" style="margin: 15px 0px; height: 50px;">
+						</div>
+					</form>
+					<a href="{{URL::to('admin/categories')}}"><button class="btn btn-primary" style="width: 100%; height: 50px;">Hủy bỏ</button></a>
 				</div>
+
 			</div>
 		</div>
-	</div><!--/.row-->
+	</div>
+</div><!--/.row-->
 </div>	<!--/.main-->
 @endsection

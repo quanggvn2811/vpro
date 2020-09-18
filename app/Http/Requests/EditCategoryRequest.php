@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddCategoryRequest extends FormRequest
+class EditCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class AddCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'unique:vp_categories,cate_name'
+            'name'=>'unique:vp_categories,cate_name,'.$this->segment(4).',cate_id'
         ];
     }
     public function messages(){

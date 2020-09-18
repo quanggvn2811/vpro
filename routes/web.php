@@ -33,8 +33,11 @@ Route::group(['namespace'=>'Admin'], function(){
 		Route::get('/', 'CategoryController@getCate');
 		Route::post('/', 'CategoryController@postCate');
 
-		Route::get('edit/{id}', 'CategoryController@editCate');
-		ROute::get('delete/{id}', 'CategoryController@deleteCate');
+		Route::get('edit/{id}', 'CategoryController@getEditCate');
+		Route::post('edit/{id}', 'CategoryController@postEditCate');
+
+
+		Route::get('delete/{id}', 'CategoryController@deleteCate');
 	});
 
 	});
