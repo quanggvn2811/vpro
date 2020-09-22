@@ -56,7 +56,7 @@
 								</div>
 								<div class="form-group" >
 									<label>Miêu tả</label>
-									<textarea required name="description"></textarea>
+									<textarea required name="description" class="ckeditor"></textarea>
 								</div>
 								<div class="form-group" >
 									<label>Danh mục</label>
