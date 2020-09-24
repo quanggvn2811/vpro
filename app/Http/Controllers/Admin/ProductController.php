@@ -6,18 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddProductRequest;
 use App\Models\Product;
+use DB;
 
 class ProductController extends Controller
 {
 	// Show products
     public function getProduct(){
-    	return view('admin.product');
+        // $data['productlist'] = Product::all();
+        $data['productlist'] = DB::table('vp_products')->join('vp_categories', 'vp_products.cate_id', '=', 'vp_categories.cate_id')->orderBy('prod_id', 'DESC')->get();
+        return view('admin.product', $data);
     }
 
     // Add product
     public function getAddProduct(){
         $data['catelist'] = Category::all();
-    	return view('admin.addproduct', $data);
+        return view('admin.addproduct', $data);
     }
     public function postAddProduct(AddProductRequest $request){
         $product = new Product;
@@ -34,6 +37,8 @@ class ProductController extends Controller
         $product->prod_description = $request->prod_description;
         $product->prod_featured = $request->prod_featured;
         $product->cate_id = $request->cate_id;
+
+        $request->prod_picture->storeAs('public/avatars', $filename);
         $product->save();
         return back();
 
@@ -49,6 +54,6 @@ class ProductController extends Controller
 
     // Delete product
     public function deleteProduct($id){
-    	echo 'delete';
+    	echo 'deleted';
     }
 }

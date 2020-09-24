@@ -24,12 +24,13 @@ class AddProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'prod_picture'=>'image'
+            'prod_picture'=>'image',
+            'prod_name'=>'unique:vp_products,prod_name'
         ];
     }
-    public function messages(){
-        return [
-            'prod_picture.image'=>'Ảnh không hợp lệ!'
-        ];
-    }
+    // public function messages(){
+    //     return [
+    //         'prod_picture.image'=>'Ảnh không hợp lệ!'
+    //     ];
+    // }
 }
