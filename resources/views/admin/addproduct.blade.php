@@ -29,7 +29,7 @@
 								</div>
 								<div class="form-group" >
 									<label>Ảnh sản phẩm</label>
-									<input required id="prod_picture" style="background-image: url('img/new_seo-10-512.png'); width: 400px; height: 300px;" type="file" name="prod_picture" class="form-control" onchange="changeImg(this)">
+									<input required style="background-image: url('img/new_seo-10-512.png'); width: 400px; height: 300px;" type="file" name="prod_picture" class="form-control" onchange="changeImg(this)">
 									{{-- <img id="avatar" class="thumbnail" width="300px" src="img/new_seo-10-512.png"> --}}
 								</div>
 								<div class="form-group" >

@@ -46,9 +46,12 @@ class ProductController extends Controller
 
     // Edit product
     public function getEditProduct($id){
-    	return view('admin.editproduct');
+        $data['catelist'] = Category::all();
+        $data['product'] = Product::find($id);
+    	return view('admin.editproduct', $data);
     }
     public function postEditProduct($id){
+        
     	
     }
 
