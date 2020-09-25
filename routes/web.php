@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('shop.home');
 });
 
 
@@ -54,4 +54,9 @@ Route::group(['namespace'=>'Admin'], function(){
 			
 		});
 	});
+});
+
+
+Route::group(['namespace'=>'Shop'], function(){
+
 });
