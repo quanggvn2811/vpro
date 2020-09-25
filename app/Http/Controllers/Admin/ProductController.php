@@ -50,13 +50,34 @@ class ProductController extends Controller
         $data['product'] = Product::find($id);
     	return view('admin.editproduct', $data);
     }
-    public function postEditProduct($id){
-        
-    	
+    public function postEditProduct(Request $request, $id){
+        $product = new Product;
+        $data['prod_name'] = $request->prod_name;
+        $data['prod_slug'] = str_slug($request->prod_slug);
+        $data['prod_price'] = $request->prod_price;
+        $data['prod_accessories'] = $request->prod_accessories;
+        $data['prod_warranty'] = $request->prod_warranty;
+        $data['prod_promotion'] = $request->prod_promotion;
+        $data['prod_status'] = $request->prod_status;
+        $data['prod_instock'] = $request->prod_instock;
+        $data['prod_description'] = $request->prod_description;
+        $data['prod_featured'] = $request->prod_featured;
+        $data['cate_id'] = $request->cate_id;
+        if($request->hasFile('prod_picture')){
+            $filename = $request->prod_picture->getClientOriginalName();
+            $data['prod_picture'] = $filename;
+            $request->prod_picture->storeAs('public/avatars', $filename);
+        }
+
+        $product::where('prod_id', $id)->update($data);
+        return redirect('admin/products');
+
     }
 
     // Delete product
     public function deleteProduct($id){
-    	echo 'deleted';
+        $product = new Product;
+        $product::destroy($id);
+    	return back();
     }
 }

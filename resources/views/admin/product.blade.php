@@ -40,7 +40,7 @@
 										<td>{{$product->cate_name}}</td>
 										<td>
 											<a href="{{URL::to('admin/products/edit/'. $product->prod_id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-											<a href="{{URL::to('admin/products/delete/'. $product->prod_id)}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
+											<a href="{{URL::to('admin/products/delete/'. $product->prod_id)}}" class="btn btn-danger" onclick="return confirm('Delete this product?');"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
 										</td>
 									</tr>
 									@endforeach

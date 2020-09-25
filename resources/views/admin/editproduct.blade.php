@@ -31,7 +31,7 @@
 									<label>Ảnh sản phẩm</label>
 									{{-- <input id="img" type="file" name="img" class="form-control " onchange="changeImg(this)">
 									<img id="avatar" class="thumbnail" width="300px" src="img/iphone7-plus-black-select-2016.jpg"> --}}
-									<input required name="prod_picture" style="background-image: url({{asset('storage/avatars/'. $product->prod_picture)}}); width: 400px; height: 300px;" type="file" name="prod_picture" class="form-control">
+									<input name="prod_picture" style="background-image: url({{asset('storage/avatars/'. $product->prod_picture)}}); width: 400px; height: 300px;" type="file" name="prod_picture" class="form-control">
 									<input type="hidden" name="prod_picture" value="{{$product->prod_picture}}">
 								</div>
 								<div class="form-group" >
