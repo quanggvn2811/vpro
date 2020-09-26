@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('shop.home');
-});
-
-
 //Server side
 Route::group(['namespace'=>'Admin'], function(){
 	Route::group(['prefix'=>'login', 'middleware'=>'CheckLogedIn'], function(){
@@ -31,15 +26,15 @@ Route::group(['namespace'=>'Admin'], function(){
 
 		//Categories
 		Route::group(['prefix'=>'categories'], function(){
-		Route::get('/', 'CategoryController@getCate');
-		Route::post('/', 'CategoryController@postCate');
+			Route::get('/', 'CategoryController@getCate');
+			Route::post('/', 'CategoryController@postCate');
 
-		Route::get('edit/{id}', 'CategoryController@getEditCate');
-		Route::post('edit/{id}', 'CategoryController@postEditCate');
+			Route::get('edit/{id}', 'CategoryController@getEditCate');
+			Route::post('edit/{id}', 'CategoryController@postEditCate');
 
 
-		Route::get('delete/{id}', 'CategoryController@deleteCate');
-	});
+			Route::get('delete/{id}', 'CategoryController@deleteCate');
+		});
 		// Products
 		Route::group(['prefix'=>'products'], function(){
 			Route::get('/', 'ProductController@getProduct');
@@ -56,7 +51,11 @@ Route::group(['namespace'=>'Admin'], function(){
 	});
 });
 
-
+// Client side
 Route::group(['namespace'=>'Shop'], function(){
 
+	Route::get('/', 'HomeController@getHome');
+	Route::group(['prefix'=>'shop'], function(){
+		Route::get('details/{id}', 'HomeController@getDetails');
+	});
 });
