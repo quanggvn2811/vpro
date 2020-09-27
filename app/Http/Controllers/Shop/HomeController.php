@@ -14,6 +14,7 @@ class HomeController extends Controller
     }
 
     public function getDetails($id){
-    	return view('shop.products.productDetails');
+    	$data['product'] = Product::find($id);
+    	return view('shop.products.productDetails', $data);
     }
 }

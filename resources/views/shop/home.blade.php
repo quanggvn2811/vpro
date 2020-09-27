@@ -1,5 +1,5 @@
 @extends('shop.master')
-@section('title', 'VProshop home')
+@section('title', 'VProshop | Home')
 @section('content')
 
 <div id="wrap-inner">
@@ -12,7 +12,7 @@
 				<p><a href="#">{{$product->prod_name}}</a></p>
 				<p class="price">{{number_format($product->prod_price)}}</p>	  
 				<div class="marsk">
-					<a href="{{URL::to('shop/details/'. $product->prod_id)}}">Xem chi tiết</a>
+					<a href="{{URL::to('details/'. $product->prod_id.'/'.$product->prod_slug.'.html')}}">Xem chi tiết</a>
 				</div>                                    
 			</div>
 			@endforeach
@@ -28,7 +28,7 @@
 				<p><a href="#">{{$product->prod_name}}</a></p>
 				<p class="price">{{number_format($product->prod_price)}}</p>	  
 				<div class="marsk">
-					<a href="{{URL::to('shop/details/'. $product->prod_id)}}">Xem chi tiết</a>
+					<a href="{{URL::to('details/'. $product->prod_id.'/'.$product->prod_slug.'.html')}}">Xem chi tiết</a>
 				</div>                      	                        
 			</div>
 		 @endforeach

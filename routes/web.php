@@ -55,7 +55,5 @@ Route::group(['namespace'=>'Admin'], function(){
 Route::group(['namespace'=>'Shop'], function(){
 
 	Route::get('/', 'HomeController@getHome');
-	Route::group(['prefix'=>'shop'], function(){
-		Route::get('details/{id}', 'HomeController@getDetails');
-	});
+	Route::get('details/{id}/{slug}', 'HomeController@getDetails');
 });

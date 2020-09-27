@@ -53,7 +53,7 @@ class ProductController extends Controller
     public function postEditProduct(Request $request, $id){
         $product = new Product;
         $data['prod_name'] = $request->prod_name;
-        $data['prod_slug'] = str_slug($request->prod_slug);
+        $data['prod_slug'] = str_slug($request->prod_name);
         $data['prod_price'] = $request->prod_price;
         $data['prod_accessories'] = $request->prod_accessories;
         $data['prod_warranty'] = $request->prod_warranty;
