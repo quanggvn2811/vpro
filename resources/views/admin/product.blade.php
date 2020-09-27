@@ -47,6 +47,10 @@
 								</tbody>
 							</table>							
 						</div>
+						<div>
+							{{$productlist->links()}}
+						</div>
+						
 					</div>
 					<div class="clearfix"></div>
 				</div>

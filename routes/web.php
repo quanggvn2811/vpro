@@ -56,4 +56,6 @@ Route::group(['namespace'=>'Shop'], function(){
 
 	Route::get('/', 'HomeController@getHome');
 	Route::get('details/{id}/{slug}', 'HomeController@getDetails');
+	Route::get('products-line/{id}/{slug}', 'HomeController@getProductLine');
+
 });

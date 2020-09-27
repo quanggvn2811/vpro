@@ -13,7 +13,7 @@ class ProductController extends Controller
 	// Show products
     public function getProduct(){
         // $data['productlist'] = Product::all();
-        $data['productlist'] = DB::table('vp_products')->join('vp_categories', 'vp_products.cate_id', '=', 'vp_categories.cate_id')->orderBy('prod_id', 'DESC')->get();
+        $data['productlist'] = DB::table('vp_products')->join('vp_categories', 'vp_products.cate_id', '=', 'vp_categories.cate_id')->orderBy('prod_id', 'DESC')->paginate(8);
         return view('admin.product', $data);
     }
 

@@ -10,7 +10,7 @@ use App\Http\Requests\EditCategoryRequest;
 class CategoryController extends Controller
 {
     public function getCate(){
-    	$data['catelist'] = Category::all();
+    	$data['catelist'] = Category::paginate(6);
     	return view('admin.category', $data);
     }
     public function postCate(AddCategoryRequest $request){

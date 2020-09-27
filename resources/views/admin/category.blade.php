@@ -51,6 +51,9 @@
 							@endforeach
 							</tbody>
 						</table>
+						<div>
+							{{$catelist->links()}}
+						</div>
 					</div>
 					<div class="clearfix"></div>
 				</div>

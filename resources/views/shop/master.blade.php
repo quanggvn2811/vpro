@@ -66,13 +66,9 @@
 					<nav id="menu">
 						<ul>
 							<li class="menu-item">danh mục sản phẩm</li>
-							<li class="menu-item"><a href="#" title="">iPhone</a></li>
-							<li class="menu-item"><a href="#" title="">Samsung</a></li>
-							<li class="menu-item"><a href="#" title="">Sony</a></li>
-							<li class="menu-item"><a href="#" title="">HTC</a></li>
-							<li class="menu-item"><a href="#" title="">LG</a></li>
-							<li class="menu-item"><a href="#" title="">OPPO</a></li>
-							<li class="menu-item"><a href="#" title="">Blackberry</a></li>						
+							@foreach($categories as $cate)
+							<li class="menu-item"><a href="{{URL::to('products-line/'.$cate->cate_id.'/'. $cate->cate_slug.'.html')}}" title="">{{$cate->cate_name}}</a></li>
+							@endforeach					
 						</ul>
 						<!-- <a href="#" id="pull">Danh mục</a> -->
 					</nav>
