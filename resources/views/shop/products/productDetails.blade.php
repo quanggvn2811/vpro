@@ -30,7 +30,8 @@
 	<div id="comment">
 		<h3>Bình luận</h3>
 		<div class="col-md-9 comment">
-			<form>
+			<form action="" method="post">
+				@csrf
 				<div class="form-group">
 					<label for="email">Email:</label>
 					<input required type="email" class="form-control" id="email" name="email">
@@ -44,42 +45,27 @@
 					<textarea required rows="10" id="cm" class="form-control" name="content"></textarea>
 				</div>
 				<div class="form-group text-right">
-					<button type="submit" class="btn btn-default">Gửi</button>
+					<button type="submit" class="btn btn-default">Gửi Bình Luận</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<div id="comment-list">
+		@foreach($comments as $cmt)
 		<ul>
 			<li class="com-title">
-				Vietpro Education
+				{{$cmt->username}}
 				<br>
-				<span>2017-19-01 10:00:00</span>	
+				<span>{{date('d/m/y h:i', strtotime($cmt->created_at))}}</span>	
 			</li>
 			<li class="com-details">
-				HTC One X 32GB là sản phẩm đáng chờ đợi nhất trong năm nay, với cấu hình mạnh và giá thành tương đối mềm so với các dòng Smart Phone của các hãng khác
+				{!! $cmt->cmt_content !!}
 			</li>
 		</ul>
-		<ul>
-			<li class="com-title">
-				Vietpro Education
-				<br>
-				<span>2017-19-01 10:00:00</span>	
-			</li>
-			<li class="com-details">
-				HTC One X 32GB là sản phẩm đáng chờ đợi nhất trong năm nay, với cấu hình mạnh và giá thành tương đối mềm so với các dòng Smart Phone của các hãng khác
-			</li>
-		</ul>
-		<ul>
-			<li class="com-title">
-				Vietpro Education
-				<br>
-				<span>2017-19-01 10:00:00</span>	
-			</li>
-			<li class="com-details">
-				HTC One X 32GB là sản phẩm đáng chờ đợi nhất trong năm nay, với cấu hình mạnh và giá thành tương đối mềm so với các dòng Smart Phone của các hãng khác
-			</li>
-		</ul>
+		@endforeach
+	</div>
+	<div class="pagination">
+		{{$comments->links()}}
 	</div>
 </div>					
 @endsection

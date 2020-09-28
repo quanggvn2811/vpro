@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use DB;
+use App\Models\Comment;
 class HomeController extends Controller
 {
     public function getHome(){
@@ -17,11 +18,21 @@ class HomeController extends Controller
 
     public function getDetails($id){
     	$data['product'] = Product::find($id);
+        $data['comments'] = Comment::where('prod_id', $id)->paginate(5);
     	return view('shop.products.productDetails', $data);
     }
     public function getProductLine($id){
     	$data['category'] = Category::find($id);
     	$data['productsline'] = Product::where('cate_id', $id)->orderBy('prod_id', 'DESC')->paginate(8);
     	return view('shop.products.productLine', $data);
+    }
+    public function postComment( Request $request, $id){
+        $comment = new Comment();
+        $comment['cmt_email'] = $request->email;
+        $comment['cmt_username'] = $request->name;
+        $comment['cmt_content'] = $request->content;
+        $comment['prod_id'] = $id;
+        $comment->save();
+        return back();
     }
 }
