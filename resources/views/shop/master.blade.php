@@ -45,10 +45,9 @@
 						</a></nav>			
 					</h1>
 				</div>
-				<div id="search" class="col-md-7 col-sm-12 col-xs-12">
-					<input type="text" name="text" value="Nhập từ khóa ...">
-					<input type="submit" name="submit" value="Tìm Kiếm">
-				</div>
+				<!-- Search -->
+					@include('shop.search.search')
+				<!-- /Search -->
 				<div id="cart" class="col-md-2 col-sm-12 col-xs-12">
 					<a class="display" href="#">Giỏ hàng</a>
 					<a href="#">6</a>				    

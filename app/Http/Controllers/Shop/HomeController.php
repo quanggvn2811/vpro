@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use DB;
 use App\Models\Comment;
+use App\Http\Requests\SearchProductRequest;
 class HomeController extends Controller
 {
     public function getHome(){
@@ -19,7 +20,7 @@ class HomeController extends Controller
     public function getDetails($id){
     	$data['product'] = Product::find($id);
         $data['comments'] = Comment::where('prod_id', $id)->paginate(5);
-    	return view('shop.products.productDetails', $data);
+        return view('shop.products.productDetails', $data);
     }
     public function getProductLine($id){
     	$data['category'] = Category::find($id);
@@ -34,5 +35,13 @@ class HomeController extends Controller
         $comment['prod_id'] = $id;
         $comment->save();
         return back();
+    }
+    public function searchList(SearchProductRequest $request){
+        $search = $request->search;
+        $data['keyword'] = $search;
+        $search = str_replace(' ', '%', $search);
+        $data['searchlist'] = Product::where('prod_name', 'like', '%'.$search.'%')->orwhere('prod_description', 'like', '%'.$search.'%')->orderBy('prod_id', 'DESC')->paginate(4);
+        $data['keyword'] = $search;
+        return view('shop.search.search-list', $data);
     }
 }
