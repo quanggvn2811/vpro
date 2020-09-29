@@ -24,7 +24,7 @@ class AddCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'unique:vp_comments,cmt_email'
+            'search' => ['required', 'string', 'max:255', 'regex:/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/'],
         ];
     }
     public function messages(){

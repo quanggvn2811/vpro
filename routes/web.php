@@ -60,4 +60,8 @@ Route::group(['namespace'=>'Shop'], function(){
 	Route::get('products-line/{id}/{slug}', 'HomeController@getProductLine');
 	Route::get('search-list', 'HomeController@searchList');
 
+	Route::group(['prefix'=>'cart'], function(){
+		Route::get('add/{id}', 'CartController@getAddCart');
+		Route::get('show', 'CartController@getShowCart');
+	});
 });

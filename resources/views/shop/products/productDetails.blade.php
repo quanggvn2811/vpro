@@ -19,7 +19,7 @@
 				<p>Tình trạng: {{$product->prod_status}}</p>
 				<p>Khuyến mại: {{$product->prod_promotion}}</p>
 				<p>Còn hàng: @if($product->prod_instock == 1) Còn hàng @else Hết hàng @endif</p>
-				<p class="add-cart text-center"><a href="#">Đặt hàng online</a></p>
+				<p class="add-cart text-center"><a href="{{URL::to('cart/add/'. $product->prod_id)}}">Đặt hàng online</a></p>
 			</div>
 		</div>					
 	</div>

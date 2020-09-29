@@ -48,10 +48,9 @@
 				<!-- Search -->
 					@include('shop.search.search')
 				<!-- /Search -->
-				<div id="cart" class="col-md-2 col-sm-12 col-xs-12">
-					<a class="display" href="#">Giỏ hàng</a>
-					<a href="#">6</a>				    
-				</div>
+				<!-- Cart -->
+				 @include('shop.shopping.cart')
+				<!-- /Cart -->
 			</div>			
 		</div>
 	</header><!-- /header -->
