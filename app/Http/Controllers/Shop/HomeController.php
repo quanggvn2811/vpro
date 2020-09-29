@@ -40,7 +40,8 @@ class HomeController extends Controller
         $search = $request->search;
         $data['keyword'] = $search;
         $search = str_replace(' ', '%', $search);
-        $data['searchlist'] = Product::where('prod_name', 'like', '%'.$search.'%')->orwhere('prod_description', 'like', '%'.$search.'%')->orderBy('prod_id', 'DESC')->paginate(4);
+        $data['searchlist'] = Product::where('prod_name', 'like', '%'.$search.'%')
+        ->orwhere('prod_description', 'like', '%'.$search.'%')->orderBy('prod_id', 'DESC')->paginate(8);
         $data['keyword'] = $search;
         return view('shop.search.search-list', $data);
     }
