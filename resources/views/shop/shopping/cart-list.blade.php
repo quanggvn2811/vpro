@@ -2,7 +2,17 @@
 @section('title', 'VPro | Cart list')
 @section('content')
 <link rel="stylesheet" href="css/cart.css">
-
+<script>
+	function updateCart(rowId, qty){
+		$.get(
+			'{{asset('cart/update')}}',
+			{rowId:rowId,qty:qty},
+			function(){
+				location.reload();
+			}
+			);
+	}
+</script>
 <div id="wrap-inner">
 	<div id="list-cart">
 		<h3>Giỏ hàng</h3>
@@ -22,12 +32,12 @@
 					<td>{{$product->name}}</td>
 					<td>
 						<div class="form-group">
-							<input class="form-control" type="number" value="{{$product->qty}}">
+							<input class="form-control" type="number" value="{{$product->qty}}" onchange="updateCart('{{$product->rowId}}', this.value)">
 						</div>
 					</td>
 					<td><span class="price">{{number_format($product->price)}}</span></td>
 					<td><span class="price">{{number_format($product->price*$product->qty)}}</span></td>
-					<td><a href="#">Xóa</a></td>
+					<td><a href="{{URL::to('cart/delete/'. $product->rowId)}}">Xóa</a></td>
 				</tr>
 				@endforeach
 				</tr>
@@ -38,9 +48,9 @@
 
 				</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
-					<a href="#" class="my-btn btn">Mua tiếp</a>
-					<a href="#" class="my-btn btn">Cập nhật</a>
-					<a href="#" class="my-btn btn">Xóa giỏ hàng</a>
+					<a href="{{URL::to('/')}}" class="my-btn btn" style="width: 150px;">Mua tiếp</a>
+					{{-- <a href="#" class="my-btn btn">Cập nhật</a> --}}
+					<a href="{{URL::to('cart/delete/all')}}" onclick="confirm('Xoá giỏ hàng của bạn?');" class="my-btn btn" style="width: 150px;">Xóa giỏ hàng</a>
 				</div>
 			</div>
 		</form>             	                	
@@ -48,7 +58,8 @@
 
 	<div id="xac-nhan">
 		<h3>Xác nhận mua hàng</h3>
-		<form>
+		<form method="post">
+			@csrf
 			<div class="form-group">
 				<label for="email">Email address:</label>
 				<input required type="email" class="form-control" id="email" name="email">
@@ -63,7 +74,7 @@
 			</div>
 			<div class="form-group">
 				<label for="add">Địa chỉ:</label>
-				<input required type="text" class="form-control" id="add" name="add">
+				<input required type="text" class="form-control" id="add" name="addr">
 			</div>
 			<div class="form-group text-right">
 				<button type="submit" class="btn btn-default">Thực hiện đơn hàng</button>

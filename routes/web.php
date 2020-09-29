@@ -63,5 +63,8 @@ Route::group(['namespace'=>'Shop'], function(){
 	Route::group(['prefix'=>'cart'], function(){
 		Route::get('add/{id}', 'CartController@getAddCart');
 		Route::get('show', 'CartController@getShowCart');
+		Route::get('update', 'CartController@getUpdateCart');
+		Route::get('delete/{rowId}', 'CartController@getDeleteCart');
+		Route::post('show', 'CartController@postSendEmail');
 	});
 });
